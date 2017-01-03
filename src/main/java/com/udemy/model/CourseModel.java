@@ -1,50 +1,23 @@
-package com.udemy.entity;
-
-
-import javax.persistence.*;
+package com.udemy.model;
 
 /**
  * Created by Jorge on 3/1/17.
  */
+public class CourseModel {
 
-@Entity
-@Table(name = "course")
-public class Course {
-
-    @Id
-    @GeneratedValue //Hibernate genera este valor por si mismo
-    @Column(name="id")
-    private int id;
-
-    @Column(name="name")
     private String name;
-
-    @Column(name="description")
     private String description;
-
-    @Column(name="price")
     private int price;
-
-    @Column(name="hours")
     private int hours;
 
-    public Course(int id, String name, String description, int price, int hours) {
-        this.id = id;
+    public CourseModel(String name, String description, int price, int hours) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.hours = hours;
     }
 
-    public Course() {
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
+    public CourseModel() {
     }
 
     public String getName() {
@@ -82,8 +55,7 @@ public class Course {
     @Override
     public String toString() {
         return "CourseModel{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
+                "name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", hours=" + hours +
