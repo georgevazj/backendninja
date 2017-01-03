@@ -1,16 +1,14 @@
 package com.udemy.controller;
 
 import com.udemy.entity.Course;
+import com.udemy.model.CourseModel;
 import com.udemy.service.CourseService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -33,15 +31,29 @@ public class CourseController {
     public ModelAndView listAllCourses(){
         LOG.info("Call: " + "listAllCourses()");
         ModelAndView mav = new ModelAndView(COURSES_VIEW);
-        mav.addObject("course", new Course());
+        mav.addObject("course", new CourseModel());
         mav.addObject("courses", courseService.listAllCourses());
         return mav;
     }
 
     @PostMapping("/addcourse")
-    public RedirectView addCourse(@ModelAttribute("course") Course course){
+    public RedirectView addCourse(@ModelAttribute("course") CourseModel course){
         LOG.info("Call: " + "addCourse() -- PARAM: " + course.toString());
         courseService.addCourse(course);
+        return new RedirectView("/course/listcourses");
+    }
+
+    @PostMapping("/updatecourse")
+    public RedirectView updateCourse(@ModelAttribute("course") CourseModel course){
+        LOG.info("Call: " + "updateCourse() -- PARAM: " + course.toString());
+        courseService.updateCourse(course);
+        return new RedirectView("/course/listcourses");
+    }
+
+    @PostMapping("/removecourse")
+    public RedirectView removeCourse(@ModelAttribute("name") CourseModel course){
+        LOG.info("Call: " + "removeCourse() -- PARAM: " + course);
+        courseService.removeCourse(course);
         return new RedirectView("/course/listcourses");
     }
 }

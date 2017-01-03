@@ -14,4 +14,6 @@ import java.util.List;
 @Repository("courseJpaRepository")
 public interface CourseJpaRepository extends JpaRepository<Course, Serializable>{
 
+    public abstract Course findByName(String name);
+
 }

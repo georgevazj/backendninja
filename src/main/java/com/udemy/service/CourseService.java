@@ -1,6 +1,7 @@
 package com.udemy.service;
 
 import com.udemy.entity.Course;
+import com.udemy.model.CourseModel;
 
 import java.util.List;
 
@@ -9,9 +10,9 @@ import java.util.List;
  */
 public interface CourseService {
 
-    public abstract List<Course> listAllCourses();
-    public abstract Course addCourse(Course course);
-    public abstract int removeCourse(int id);
-    public abstract Course updateCourse(Course course);
+    public abstract List<CourseModel> listAllCourses();
+    public abstract CourseModel addCourse(CourseModel courseModel);
+    public abstract int removeCourse(CourseModel courseModel);
+    public abstract CourseModel updateCourse(CourseModel courseModel);
 
 }
