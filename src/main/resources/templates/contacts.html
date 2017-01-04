@@ -71,6 +71,10 @@
 				</tbody>
 			</table>
 		</div>
+
+		<div class="alert alert-success" role="alert" th:if="${result == 1}">Contact successfully added!</div>
+		<div class="alert alert-danger" role="alert" th:if="${result == 0}">Error adding contact</div>
+
 		<a href="#" th:href="@{/contacts/contactform}">
 			<button class="btn btn-lg btn-primary btn-block" type="submit"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Add contact</button>
 		</a>
