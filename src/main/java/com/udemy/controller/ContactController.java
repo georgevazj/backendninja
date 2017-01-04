@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -60,7 +57,12 @@ public class ContactController {
             model.addAttribute("result", 0);
         }
         return "redirect:/contacts/showcontacts";
+    }
 
+    @GetMapping("/removecontact")
+    public ModelAndView removeContact(@RequestParam(name="id", required = true) int id){
+        contactService.removeContact(id);
+        return showContacts();
     }
 
 }
