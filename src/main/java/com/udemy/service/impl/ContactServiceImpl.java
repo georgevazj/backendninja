@@ -9,6 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Jorge on 4/1/17.
  */
@@ -29,6 +32,16 @@ public class ContactServiceImpl implements ContactService {
         Contact contact = contactConverter.model2entity(contactModel);
         contactRepository.save(contact);
         return contactConverter.entity2model(contact);
+    }
+
+    @Override
+    public List<ContactModel> listAllContacts() {
+        List<Contact> contacts = contactRepository.findAll();
+        List<ContactModel> contactModels = new ArrayList<>();
+        for (Contact contact : contacts){
+            contactModels.add(contactConverter.entity2model(contact));
+        }
+        return contactModels;
     }
 
 }
