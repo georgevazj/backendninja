@@ -50,6 +50,11 @@ public class ContactServiceImpl implements ContactService {
     }
 
     @Override
+    public ContactModel findContactByIdModel(int id){
+        return contactConverter.entity2model(findContactById(id));
+    }
+
+    @Override
     public void removeContact(int id) {
         Contact contact = findContactById(id);
         if (contact != null){

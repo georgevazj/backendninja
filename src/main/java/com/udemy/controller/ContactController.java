@@ -2,6 +2,7 @@ package com.udemy.controller;
 
 import com.querydsl.core.annotations.QueryInit;
 import com.udemy.constant.ViewConstant;
+import com.udemy.entity.Contact;
 import com.udemy.model.ContactModel;
 import com.udemy.service.ContactService;
 import org.apache.commons.logging.Log;
@@ -29,7 +30,7 @@ public class ContactController {
 
     @GetMapping("/cancel")
     public String cancel(){
-        return ViewConstant.CONTACTS;
+        return "redirect:/contacts/showcontacts";
     }
 
     @GetMapping("/showcontacts")
@@ -40,9 +41,16 @@ public class ContactController {
     }
 
     @GetMapping("/contactform")
-    public String redirectContactForm(Model model){
+    public String redirectContactForm(
+            @RequestParam(name="id", required = false) int id,
+            Model model){
+
         LOG.info("METHOD: redirectContactForm() -- " + ViewConstant.CONTACT_FORM);
-        model.addAttribute("contactModel", new ContactModel());
+        ContactModel contactModel = new ContactModel();
+        if (id != 0){
+            contactModel = contactService.findContactByIdModel(id);
+        }
+        model.addAttribute("contactModel", contactModel);
         return ViewConstant.CONTACT_FORM;
     }
 
