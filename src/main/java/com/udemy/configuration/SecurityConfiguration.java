@@ -1,6 +1,5 @@
 package com.udemy.configuration;
 
-import com.udemy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Configuration;

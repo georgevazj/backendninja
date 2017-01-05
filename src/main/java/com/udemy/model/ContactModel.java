@@ -1,7 +1,5 @@
 package com.udemy.model;
 
-import javax.persistence.Column;
-
 /**
  * Created by Jorge on 3/1/17.
  */
