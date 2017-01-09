@@ -14,3 +14,5 @@ spring:
     url: jdbc:mysql://172.17.0.2:3306/mydb?useSSL=false
     username: root
     password: root
+  thymeleaf:
+    cache: false
