@@ -58,7 +58,7 @@
 			<artifactId>querydsl-jpa</artifactId>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.springframework/springloaded -->
+		<!-- https://mvnrepository.com/a<rtifact/org.springframework/springloaded -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>springloaded</artifactId>
